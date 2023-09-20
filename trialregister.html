@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Your Web Page Title</title>
+    <link rel="stylesheet" type="text/css" href="static/registration.css">
+</head>
+
+<body>
+    <section id="content-body"></section>
+    <div class="form-container" id="register-form-container">
+        <h1>new user register</h1>
+        <form action="/registration/form" autocomplete="off" class="registration-form" id="register-form" method="post">
+            <input id="nickControlEndpointUrl" type="hidden" value="/registration/canregisternick">
+            <fieldset class="vertical">
+                <div>
+                    <label for="Nick">nick</label>
+                    <input id="Nick" name="Nick" type="text" value="" autocapitalize="off" autocorrect="off">
+                </div>
+                <div>
+                    <label for="Email">e-mail</label>
+                    <input id="Email" name="Email" type="email" value="">
+                </div>
+                <div style="margin-top:30px">
+
+                    <div class="row">
+                        <div class="col-label">
+                            <label for="Password">password</label>
+                        </div>
+                        <div class="col-input">
+                            <div id="pw-strength-meter">
+                                <span class="meter-indicator"></span>
+                            </div>
+                            <input id="Password" name="Password" type="password">
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-label">
+                        <label for="PasswordConfirm">password (again)</label>
+                    </div>
+                    <div class="col-input">
+                        <input id="PasswordConfirm" name="PasswordConfirm" type="password"><span
+                            class="field-validation-error"></span>
+                        <div class="validation-conditions-container">
+                            <div class="cond-error">minimum 8 characters</div>
+                            <div class="cond-error">minimum 1 uppercase letter</div>
+                            <div class="cond-error">minimum 1 lowercase letter</div>
+                            <div class="cond-error">should contain number</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div>
+                    <label class="checkbox">
+                        <input id="EulaConfirmed" name="EulaConfirmed" type="checkbox" value="true"><input
+                            name="EulaConfirmed" type="hidden" value="false">
+                        I read the<a href="/registration/eula" target="_blank"> audit agreement</a> and accept it
+
+                    </label>
+
+                </div>
+            </fieldset>
+
+    </div>
+    </section>
+</body>
+
+</html>
