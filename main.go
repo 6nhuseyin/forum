@@ -1,6 +1,31 @@
 package main
 
 import (
+    "net/http"
+)
+
+type User struct {
+    ID       int
+    Email    string
+    Username string
+    Password string
+}
+
+func main() {
+    http.Handle("/", http.FileServer(http.Dir("./static")))
+    http.ListenAndServe(":8080", nil)
+}
+
+
+
+
+
+
+// below is the old code:
+/*
+package main
+
+import (
 	"database/sql"
 	"fmt"
 	"log"
@@ -43,3 +68,4 @@ func main() {
 
 	}
 }
+*/
