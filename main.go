@@ -1,28 +1,23 @@
 package main
 
 import (
-    "net/http"
+	"net/http"
 )
-
+/*
 type User struct {
-    ID       int
-    Email    string
-    Username string
-    Password string
+	ID       int
+	Email    string
+	Username string
+	Password string
 }
 
 func main() {
-    http.Handle("/", http.FileServer(http.Dir("./static")))
-    http.ListenAndServe(":8080", nil)
-}
-
-
-
-
-
+	http.Handle("/", http.FileServer(http.Dir("./")))
+	http.ListenAndServe(":8080", nil)
+}*/
 
 // below is the old code:
-/*
+
 package main
 
 import (
@@ -67,5 +62,6 @@ func main() {
 		fmt.Println("password is: ", password)
 
 	}
+	http.Handle("/", http.FileServer(http.Dir("./")))
+	http.ListenAndServe(":8080", nil)
 }
-*/
