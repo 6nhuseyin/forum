@@ -1,67 +1,65 @@
 package main
 
 import (
+	"forumhub/dal"
+	"html/template"
+	"log"
 	"net/http"
 )
-/*
-type User struct {
-	ID       int
-	Email    string
-	Username string
-	Password string
+
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	log.Println("Home Handler hit")
+	if r.URL.Path != "/" {
+		http.NotFound(w, r)
+		return
+	}
+	// files := []string {
+	// 	"templates/layout.html",
+	// 	"templates/home.html",
+	// }
+	tmpl, err := template.ParseFiles("templates/layout.html", "templates/home.html")
+	if err != nil {
+		log.Printf("Error Parsing files")
+	}
+	err = tmpl.ExecuteTemplate(w, "layout", nil)
+	if err != nil {
+		log.Printf("Error executing template: %v", err)
+	}
+}
+
+// var tmpl *template.Template
+
+func init() {
+	dal.InitDatabase()
+	// var err error
+	// tmpl, err = template.ParseGlob("templates/*.html")
+	// if err != nil {
+	// 	log.Fatalf("Error: Failed to parse the template. %v", err) // log.Fatalf will log the error and call os.Exit(1)
+	// }
+}
+
+// func allHandlers(){
+// 	http.HandleFunc("/",homeHander)
+// }
+
+func Server() {
+
+	fs := http.FileServer(http.Dir("static"))
+
+	//initialize a new servemux and register the home function as the handler for the "/" URL pattern.
+	mux := http.NewServeMux()
+	mux.Handle("/static/", http.StripPrefix("/static/", fs))
+	mux.HandleFunc("/", HomeHandler)
+
+	//Start a new web server listening on port 7000
+	log.Print("Starting server on :7001")
+	err := http.ListenAndServe(":7001", mux)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 }
 
 func main() {
-	http.Handle("/", http.FileServer(http.Dir("./")))
-	http.ListenAndServe(":8080", nil)
-}*/
-
-// below is the old code:
-
-package main
-
-import (
-	"database/sql"
-	"fmt"
-	"log"
-
-	//database driver for SQLite ->
-	_ "github.com/mattn/go-sqlite3"
-)
-
-func main() {
-
-	database, err := sql.Open("sqlite3", "forumdatabase.db")
-	if err != nil {
-		log.Fatal(err)
-	}
-	statement, err := database.Prepare("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, username TEXT, email TEXT, password TEXT)")
-	if err != nil {
-		log.Fatal(err)
-	}
-	statement.Exec()
-
-	statement, err = database.Prepare("INSERT INTO users(username, email, password) VALUES(?, ? , ?)")
-	if err != nil {
-		log.Fatal(err)
-	}
-	statement.Exec("bambi", "bambi@gmail.com", "IloveBonesandSometimesMike")
-
-	rows, _ := database.Query("SELECT id, username, email, password FROM users")
-	var id int
-	var username string
-	var password string
-	var email string
-
-	for rows.Next() {
-		rows.Scan(&id, &username, &password, &email)
-
-		fmt.Println("id is: ", id)
-		fmt.Println("username is: ", username)
-		fmt.Println("email is: ", email)
-		fmt.Println("password is: ", password)
-
-	}
-	http.Handle("/", http.FileServer(http.Dir("./")))
-	http.ListenAndServe(":8080", nil)
+	Server()
 }
