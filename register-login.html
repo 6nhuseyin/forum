@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Register</title>
-    <link rel="stylesheet" href="static/register-login.css">
+    <title>Register or Login to the Forum</title>
+    <link rel="stylesheet" href="static/css/register-login.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
                 <button type="button" class="toggle-btn" onclick="login()">Login</button>
                 <button type="button" class="toggle-btn" onclick="register()">Register</button>
             </div>
-            <form id="login" class="input-group">
+            <form id="login" class="input-group" POST>
                 <input type="text" class="input-field" placeholder="User Name" required>
                 <input type="text" class="input-field" placeholder="Password" required>
                 <input type="checkbox" class="check-box">
@@ -27,7 +27,7 @@
                 <input type="text" class="input-field" placeholder="User Name" required>
                 <input type="email" class="input-field" placeholder="Email" required>
                 <input type="text" class="input-field" placeholder="Password" required>
-                <input type="checkbox" class="check-box"><span>I agree to the terms ^ conditions</span>
+                <input type="checkbox" class="check-box"><span>I agree to the terms & conditions</span>
                 <button type="submit" class="submit-btn">Log in</button>
             </form>
         </div>

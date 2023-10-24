@@ -1,3 +1,8 @@
+<!--{{define "title"}}
+A Login Register
+{{end}}
+
+{{define "content"}}-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +27,8 @@
         <div class="forum-content">
             {{range .}}
             <div class="forum-post">
-                <h2>{{.Title}}</h2>
+                <!-- <h2>{{.Title}}</h2> -->
+                <p> {{.Post}} </p>
                 <p>Posted by {{.User}} in {{.Category}}</p>
                 <p>{{.Content}}</p>
                 <a href="{{.Link}}">Read More</a>
@@ -37,3 +43,4 @@
 </body>
 
 </html>
+<!--{{end}}-->
