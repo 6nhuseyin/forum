@@ -5,7 +5,7 @@ To implement the Go function for user registration, create a server-side code th
 - checks for duplicate emails,
 - encrypts the password,
 - inserts the user data into the SQLite database, and
-- returns appropriate responses to the client.
+- returns appropriate responses to the client..
 
 
 forum/

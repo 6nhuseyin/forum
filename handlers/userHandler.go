@@ -19,12 +19,13 @@ type User struct {
 	Email    string
 	Password string
 }
+
 func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		// Parse form data
 		username := r.FormValue("username")
-		email := r.FormValue("email")
-		password := r.FormValue("password")
+		email := r.FormValue("useremail")
+		password := r.FormValue("userpassword")
 		// Check if the email is already taken (you need to implement this)
 		if IsEmailTaken(email) {
 			// Handle the case where the email is already taken
@@ -47,7 +48,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		// Redirect the user to the login page or home page
-		http.Redirect(w, r, "/login", http.StatusSeeOther)
+		http.Redirect(w, r, "/index", http.StatusSeeOther)
 		return
 	}
 	// Render the registration form template (you need to create this template)
