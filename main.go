@@ -1,15 +1,26 @@
 package main
 
 import (
-	"forumhub/dal"
+	"fmt"
 	"log"
 	"net/http"
+
+	"forum/data-access"
+	"forum/router"
 )
 
 // var tmpl *template.Template
 
 func init() {
-	dal.InitDatabase()
+	err := data-access.InitDatabase()
+	
+	if err != nil {
+		log.Fatalf("Failed to connect to database: %v\n", err)
+	}
+	fmt.Println("Success connected to database")
+	mux := http.NewServeMux()
+	router.SetupRoutes(mux)
+
 	// var err error
 	// tmpl, err = template.ParseGlob("templates/*.html")
 	// if err != nil {
