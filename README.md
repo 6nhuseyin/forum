@@ -7,7 +7,9 @@ To implement the Go function for user registration, create a server-side code th
 - inserts the user data into the SQLite database, and
 - returns appropriate responses to the client..
 
+A possible application file structure:
 
+```
 forum/
 |-- main.go                  # Main application entry point
 |-- CreateDatabase.go        # Database setup script
@@ -36,3 +38,4 @@ forum/
 |-- .env                     # Environment variables (for sensitive data)
 |-- .gitignore               # Git ignore file
 |-- .dockerignore            # Docker ignore file
+```
