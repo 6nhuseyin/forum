@@ -18,19 +18,11 @@ func init() {
 		log.Fatalf("Failed to connect to database: %v\n", err)
 	}
 	fmt.Println("Success connected to database")
-	mux := http.NewServeMux()
-	router.SetupRoutes(mux)
 
-	// var err error
-	// tmpl, err = template.ParseGlob("templates/*.html")
-	// if err != nil {
-	// 	log.Fatalf("Error: Failed to parse the template. %v", err) // log.Fatalf will log the error and call os.Exit(1)
-	// }
+	
 }
 
-// func allHandlers(){
-// 	http.HandleFunc("/",homeHander)
-// }
+
 
 func Server() {
 
@@ -50,6 +42,21 @@ func Server() {
 
 }
 
+func pathHandler(w http.ResponseWriter, r *http.Request) {
+	switch r.URL.Path {
+	case "/":
+		HomeHandler(w, r)
+	case "/register":
+		RegisterHandler(w, r)
+	case "/login":
+		LoginHandler(w, r)
+	default:
+		ErrorHandler(w, r, 404)
+	}
+
+}
+
 func main() {
 	Server()
+	http.HandleFunc("/", pathHandler)
 }
