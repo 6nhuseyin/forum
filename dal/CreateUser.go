@@ -1,4 +1,4 @@
-package data-access
+package dal
 
 func CreateUser(Username, Email, Password string) error{
 	var UserQuery string = "INSERT INTO Users(Username,Email,Password) VALUES(?,?,?)"

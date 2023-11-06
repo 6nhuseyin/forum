@@ -1,4 +1,4 @@
-package main
+package handlers
 
 import (
 	"html/template"
@@ -25,4 +25,3 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Error executing template: %v", err)
 	}
 }
-

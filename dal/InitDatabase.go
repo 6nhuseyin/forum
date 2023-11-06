@@ -1,4 +1,4 @@
-package data-access
+package dal
 
 import (
 	"database/sql"
@@ -11,7 +11,7 @@ var db *sql.DB
 func InitDatabase(){
 	var err error
 	//Open SQLite database
-	db, err = sql.Open("sqlite3","./data-access/forum.db")
+	db, err = sql.Open("sqlite3","./dal/forum.db")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -19,7 +19,7 @@ func InitDatabase(){
 
 
 // Read the schema.sql file
-schema, err := os.ReadFile("./data-access/schema.sql")
+schema, err := os.ReadFile("./dal/schema.sql")
 if err != nil {
 	log.Fatal(err)
 }
@@ -32,6 +32,3 @@ if err != nil {
 }
 
 }
-
-
-
