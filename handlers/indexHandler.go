@@ -6,8 +6,8 @@ import (
 	"net/http"
 )
 
-func indexHandler(w http.ResponseWriter, r *http.Request) {
-	log.Println("indexHandler hit")
+func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	log.Println("Home Handler hit")
 	if r.URL.Path != "/" {
 		http.NotFound(w, r)
 		return
@@ -16,7 +16,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	// 	"templates/layout.html",
 	// 	"templates/home.html",
 	// }
-	tmpl, err := template.ParseFiles("templates/layout.html", "templates/index.html")
+	tmpl, err := template.ParseFiles("templates/layout.html", "templates/home.html")
 	if err != nil {
 		log.Printf("Error Parsing files")
 	}
@@ -25,3 +25,4 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Error executing template: %v", err)
 	}
 }
+
