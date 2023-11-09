@@ -11,7 +11,9 @@ import (
 // var tmpl *template.Template
 
 func init() {
+
 	dal.InitDatabase()
+	
 	fmt.Println("Success connected to database")
 }
 
@@ -48,6 +50,6 @@ func pathHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	Server()
 	http.HandleFunc("/", pathHandler)
+	Server()
 }
